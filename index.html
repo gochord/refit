@@ -237,13 +237,78 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 footer{background:#a3fc5e;color:#666666;text-align:center;padding:2.6rem;font-size:.77rem;line-height:2;font-weight:500;}
 footer strong{color:#000000;font-weight:900;}
 
+/* ===== 모바일 최적화 ===== */
 @media(max-width:640px){
-  .sl-outer{padding:0 .5rem 3rem;}
+
+  /* HERO */
+  .hero{padding:3.5rem 1.2rem 3rem;}
+  .hero h1{font-size:clamp(2rem,9vw,2.9rem);letter-spacing:-.03em;}
+  .hero p{font-size:.95rem;line-height:1.75;}
+  .sdg-badge{font-size:11px;padding:6px 16px;margin-bottom:1.6rem;}
+  .scroll-hint{margin-top:2.5rem;}
+
+  /* SECTION HEADER */
+  .sec-hd{padding:2.5rem .8rem 1.2rem;}
+  .sec-hd h2{font-size:clamp(1.3rem,5vw,1.7rem);}
+
+  /* SLIDER */
+  .sl-outer{padding:0 .6rem 2.5rem;}
   .arr{display:none;}
-  .slide{padding:2.4rem 1.4rem 1.9rem;}
+  .slide{padding:2rem 1.1rem 1.6rem;}
+  .cloth-wrap{width:160px;height:160px;border-radius:24px;margin-bottom:1.2rem;}
+  .cloth-wrap img{width:120px;height:120px;}
+  .cloth-name{font-size:1.35rem;}
+  .cloth-sub{margin-bottom:1.6rem;}
+  .ck-btn{padding:.75rem 1.8rem;font-size:.88rem;}
+  .res-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .res-card{padding:1rem .7rem;}
+  .res-icon{font-size:1.6rem;}
+  .res-val{font-size:1.05rem;}
+  .res-lbl{font-size:.68rem;}
+  .res-fact{font-size:.82rem;padding:.9rem 1rem;margin-bottom:1.1rem;}
+  .bk-btn{font-size:.78rem;padding:.5rem 1.2rem;}
+  .dots{margin-top:1.1rem;}
+
+  /* STATS */
+  .stats-sec{padding:0 .8rem 2.5rem;}
   .stats-grid{grid-template-columns:1fr 1fr;gap:10px;}
-  .stat-card{padding:1.3rem 1.1rem;}
-  .stat-num{font-size:1.75rem;}
+  .stat-card{padding:1.2rem .9rem;border-radius:18px;}
+  .stat-icon{font-size:1.7rem;}
+  .stat-num{font-size:1.65rem;}
+  .stat-num .unit{font-size:.8rem;}
+  .stat-label{font-size:.74rem;}
+
+  /* BOTTOM / FF-BOX */
+  .btm{padding:2.5rem .9rem 4rem;}
+  .ff-box{padding:1.5rem 1.3rem;border-radius:20px;margin-bottom:2rem;}
+  .ff-title{font-size:1rem;}
+  .ff-item{font-size:.82rem;line-height:1.65;gap:10px;}
+  .ff-n{font-size:.67rem;padding:2px 8px;min-width:28px;}
+
+  /* ARTICLES */
+  .art-hd{font-size:1.1rem;}
+  .art-grid{grid-template-columns:1fr;gap:10px;}
+  .art-card{padding:1.3rem 1.2rem 1rem;border-radius:16px;}
+  .art-title{font-size:.95rem;}
+  .art-prev{font-size:.76rem;}
+
+  /* MODAL */
+  .mo{padding:.8rem;}
+  .mb{padding:2rem 1.3rem;border-radius:20px;max-height:92vh;}
+  .m-title{font-size:1.25rem;margin-bottom:1rem;}
+  .m-body{font-size:.87rem;line-height:1.82;}
+  .mc-btn{top:1rem;right:1rem;width:34px;height:34px;font-size:.9rem;}
+
+  /* FOOTER */
+  footer{padding:2rem 1rem;font-size:.72rem;}
+}
+
+/* 작은 폰 추가 보정 */
+@media(max-width:380px){
+  .hero h1{font-size:1.85rem;}
+  .res-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .stat-num{font-size:1.45rem;}
 }
 </style>
 </head>
@@ -480,6 +545,19 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 setTimeout(()=>{document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'));},80);
 
 startTimer();
+
+/* 터치 스와이프 지원 */
+(function(){
+  const sl = document.getElementById('slides');
+  let startX = 0, isDragging = false;
+  sl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, {passive:true});
+  sl.addEventListener('touchend', e => {
+    if(!isDragging) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx) > 40){ nav(dx < 0 ? 1 : -1); }
+    isDragging = false;
+  }, {passive:true});
+})();
 </script>
 </body>
 </html>
