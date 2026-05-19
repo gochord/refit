@@ -227,9 +227,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .mc-btn{position:absolute;top:1.3rem;right:1.3rem;background:var(--green-light);border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--ink-mid);transition:background .2s;font-weight:900;}
 .mc-btn:hover{background:var(--border);}
 .m-tag{display:inline-block;background:#a3fc5e;color:#000000;font-size:.7rem;font-weight:900;letter-spacing:.08em;border-radius:8px;padding:3px 11px;margin-bottom:1rem;text-transform:uppercase;}
-.m-tag.red{background:var(--coral-light);color:var(--coral);}
-.m-tag.blue{background:var(--sky-light);color:var(--sky);}
-.m-tag.yellow{background:var(--yellow-light);color:#a07600;}
+.m-tag.red{background:#a3fc5e;color:#000000;}
+.m-tag.blue{background:#a3fc5e;color:#000000;}
+.m-tag.yellow{background:#a3fc5e;color:#000000;}
 .m-title{font-size:1.55rem;font-weight:900;color:var(--ink);margin-bottom:1.35rem;line-height:1.38;letter-spacing:-.035em;}
 .m-body{font-size:.92rem;color:var(--ink-mid);line-height:1.92;font-weight:400;}
 .m-body p{margin-bottom:1rem;}.m-body strong{color:#2865ff;font-weight:900;}.m-body p:last-child{margin-bottom:0;}
@@ -514,8 +514,8 @@ const ARTS=[
 let cur=0,tot=5,raf=null,t0=null;
 const DUR=15000;
 function updSlider(){document.getElementById('slides').style.transform=`translateX(-${cur*100}%)`;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('ac',i===cur));}
-function nav(d){cur=(cur+d+tot)%tot;updSlider();resetTimer();}
-function go(i){cur=i;updSlider();resetTimer();}
+function nav(d){document.querySelectorAll('.slide.rv').forEach(el=>el.classList.remove('rv'));cur=(cur+d+tot)%tot;updSlider();resetTimer();}
+function go(i){document.querySelectorAll('.slide.rv').forEach(el=>el.classList.remove('rv'));cur=i;updSlider();resetTimer();}
 function revealSlide(i){document.getElementById('sl'+i).classList.add('rv');stopTimer();}
 function hideSlide(i){document.getElementById('sl'+i).classList.remove('rv');resetTimer();}
 function startTimer(){t0=Date.now();const bar=document.getElementById('prog');function tick(){const el=Date.now()-t0,pct=Math.min(el/DUR*100,100);bar.style.width=pct+'%';if(el>=DUR){nav(1);}else{raf=requestAnimationFrame(tick);}}raf=requestAnimationFrame(tick);}
