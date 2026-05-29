@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>옷 한 벌의 대가 — UN SDGs 12</title>
+<title>Re:Fit — 지구가 치르는 패션의 값 | UN SDGs 12</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -237,6 +237,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 footer{background:#a3fc5e;color:#666666;text-align:center;padding:2.6rem;font-size:.77rem;line-height:2;font-weight:500;}
 footer strong{color:#000000;font-weight:900;}
 
+/* ===== 설문 결과 섹션 ===== */
+.survey-sec{padding:4rem 1.5rem 3.5rem;}
+.survey-highlights{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;grid-template-areas:"blue green yellow" "green2 green2 yellow";gap:16px;max-width:860px;margin:0 auto 2.5rem;}
+.survey-hl-card{border-radius:var(--r-xl);padding:2rem 1.5rem;position:relative;overflow:hidden;}
+.survey-hl-card.blue{grid-area:blue;background:#2865ff;color:#fff;}
+.survey-hl-card.green{grid-area:green;background:#a3fc5e;color:#1a2e1e;}
+.survey-hl-card.yellow{grid-area:yellow;background:#f5c842;color:#1a2e1e;}
+.survey-hl-card.green2{grid-area:green2;background:#6ec96e;color:#fff;}
+.survey-hl-tag{display:inline-block;background:rgba(255,255,255,.25);border-radius:100px;padding:3px 12px;font-size:.7rem;font-weight:900;letter-spacing:.06em;margin-bottom:.8rem;}
+.survey-hl-card.green .survey-hl-tag,.survey-hl-card.yellow .survey-hl-tag{background:rgba(0,0,0,.12);}
+.survey-hl-num{font-size:2.8rem;font-weight:900;line-height:1;margin-bottom:.4rem;letter-spacing:-.05em;}
+.survey-hl-desc{font-size:.82rem;font-weight:500;line-height:1.5;opacity:.9;}
+.survey-hl-desc strong{font-weight:900;}
+.survey-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:16px;max-width:860px;margin:0 auto 2rem;}
+.survey-card{background:var(--white);border-radius:var(--r-xl);padding:1.8rem 1.6rem;box-shadow:var(--shadow);transition:transform .32s,box-shadow .32s;}
+.survey-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);}
+.survey-q{font-size:.95rem;font-weight:900;color:var(--ink);margin-bottom:1.2rem;line-height:1.45;letter-spacing:-.02em;}
+.survey-bars{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.survey-bar-row{display:flex;align-items:center;gap:10px;}
+.survey-bar-label{font-size:.75rem;color:var(--ink-mid);font-weight:500;width:162px;flex-shrink:0;line-height:1.3;word-break:keep-all;}
+.survey-bar-wrap{flex:1;display:flex;align-items:center;gap:8px;}
+.survey-bar{height:10px;border-radius:6px;transition:width .6s ease;}
+.survey-bar-val{font-size:.8rem;font-weight:900;color:var(--ink);min-width:32px;}
+.survey-insight{background:var(--green-light);border-left:4px solid #2865ff;border-radius:0 var(--r-md) var(--r-md) 0;padding:.75rem 1rem;font-size:.78rem;color:var(--ink-mid);line-height:1.6;}
+.survey-insight strong{color:#2865ff;font-weight:900;}
+.survey-detail-wrap,.survey-reason-wrap{max-width:860px;margin:0 auto 2rem;background:var(--white);border-radius:var(--r-xl);padding:2rem;box-shadow:var(--shadow);}
+.survey-detail-hd{font-size:1rem;font-weight:900;color:var(--ink);margin-bottom:1.5rem;letter-spacing:-.02em;}
+.survey-detail-grid{display:flex;gap:12px;align-items:flex-end;height:180px;}
+.survey-detail-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;}
+.survey-detail-bar-wrap{flex:1;width:100%;display:flex;align-items:flex-end;min-height:0;}
+.survey-detail-bar{width:100%;border-radius:6px 6px 0 0;min-height:4px;}
+.survey-detail-val{font-size:.78rem;font-weight:900;color:var(--ink);}
+.survey-detail-lbl{font-size:.66rem;color:var(--ink-light);font-weight:500;text-align:center;line-height:1.3;}
+.survey-reason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;}
+.survey-reason-card{background:var(--bg);border-radius:var(--r-lg);padding:1.2rem 1rem;text-align:center;transition:transform .28s,box-shadow .28s;}
+.survey-reason-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.survey-reason-card.reason-main{background:#a3fc5e;}
+.survey-reason-icon{font-size:1.8rem;margin-bottom:.4rem;}
+.survey-reason-num{font-size:1.4rem;font-weight:900;color:#2865ff;margin-bottom:.2rem;}
+.survey-reason-card.reason-main .survey-reason-num{color:#1a2e1e;}
+.survey-reason-lbl{font-size:.74rem;color:var(--ink-mid);font-weight:500;line-height:1.3;}
+
 /* ===== 모바일 최적화 ===== */
 @media(max-width:640px){
 
@@ -301,6 +343,15 @@ footer strong{color:#000000;font-weight:900;}
 
   /* FOOTER */
   footer{padding:2rem 1rem;font-size:.72rem;}
+
+  /* SURVEY 모바일 */
+  .survey-highlights{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;grid-template-areas:"blue green" "yellow yellow" "green2 green2";gap:10px;}
+  .survey-hl-num{font-size:2rem;}
+  .survey-grid{grid-template-columns:1fr;gap:12px;}
+  .survey-bar-label{width:118px;font-size:.68rem;}
+  .survey-detail-grid{gap:6px;height:140px;}
+  .survey-detail-lbl{font-size:.58rem;}
+  .survey-reason-grid{grid-template-columns:1fr 1fr;}
 }
 
 /* 작은 폰 추가 보정 */
@@ -317,7 +368,7 @@ footer strong{color:#000000;font-weight:900;}
 <header class="hero">
   <div class="hero-deco"><i></i><i></i><i></i><i></i></div>
   <div class="sdg-badge reveal">UN SDGs 목표 12 &middot; 책임 있는 소비와 생산</div>
-  <h1 class="reveal rv1">옷 한 벌의<br><em>숨겨진 대가</em></h1>
+  <h1 class="reveal rv1">지구가 보낸<br><em>옷값 청구서</em></h1>
   <p class="reveal rv2">우리가 매일 입는 옷이 지구에 남기는 흔적,<br>Re:Fit과 함께 자세히 알아보아요 🌏</p>
   <div class="scroll-hint reveal rv3"><span>SCROLL</span><div class="scroll-arr"></div></div>
 </header>
@@ -486,8 +537,318 @@ footer strong{color:#000000;font-weight:900;}
   </div>
 </div>
 
+<!-- 설문 결과 섹션 -->
+<section class="survey-sec" id="survey">
+  <div class="stats-in">
+    <div class="sec-hd reveal" style="padding-top:.5rem;">
+      <div class="sec-tag">우리들의 소비 습관</div>
+      <h2>설문조사 결과 — 우리 학교 학생들의 솔직한 대답</h2>
+      <p>Re:Fit이 직접 물어본 실제 의류 소비 행태</p>
+    </div>
+
+    <!-- 하이라이트 블록 (플로깅 스타일) -->
+    <div class="survey-highlights reveal">
+      <div class="survey-hl-card blue">
+        <span class="survey-hl-tag">#쇼핑 빈도</span>
+        <div class="survey-hl-num">50%</div>
+        <div class="survey-hl-desc">시즌별로 가끔 구매한다</div>
+      </div>
+      <div class="survey-hl-card green">
+        <span class="survey-hl-tag">#구매 고려사항</span>
+        <div class="survey-hl-num">89%</div>
+        <div class="survey-hl-desc">가장 많이 보는 건 <strong>디자인</strong></div>
+      </div>
+      <div class="survey-hl-card yellow">
+        <span class="survey-hl-tag">#월 소비량</span>
+        <div class="survey-hl-num">57%</div>
+        <div class="survey-hl-desc">한 달에 1벌만 산다</div>
+      </div>
+      <div class="survey-hl-card green2">
+        <span class="survey-hl-tag">#중고 경험</span>
+        <div class="survey-hl-num">44%</div>
+        <div class="survey-hl-desc">중고 기부·판매 경험 있음</div>
+      </div>
+    </div>
+
+    <!-- 설문 그래프 카드 그리드 -->
+    <div class="survey-grid">
+
+      <!-- 1. 쇼핑 빈도 -->
+      <div class="survey-card reveal rv1">
+        <div class="survey-q">🛍️ 쇼핑 빈도는 어느 정도인가요?</div>
+        <div class="survey-bars">
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">시즌별로 가끔 구매</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:50%;background:#4a90d9;"></div>
+              <span class="survey-bar-val">50%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">꼭 필요할 때만 신중하게</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:35%;background:#6ec96e;"></div>
+              <span class="survey-bar-val">35%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">자주 쇼핑, 충동구매 있다</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:15%;background:#5f7187;"></div>
+              <span class="survey-bar-val">15%</span>
+            </div>
+          </div>
+        </div>
+        <div class="survey-insight">💡 절반 이상이 <strong>계획적 구매</strong>를 지향해요</div>
+      </div>
+
+      <!-- 2. 입지 않는 옷 -->
+      <div class="survey-card reveal rv2">
+        <div class="survey-q">👗 입지 않는 옷이 생기면 어떻게 하나요?</div>
+        <div class="survey-bars">
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">가끔 정리지만 대부분 보관</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:55%;background:#4a90d9;"></div>
+              <span class="survey-bar-val">55%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">그냥 버리는 경우가 많다</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:25%;background:#6ec96e;"></div>
+              <span class="survey-bar-val">25%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">중고 판매하거나 기부한다 ♻️</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:20%;background:#5f7187;"></div>
+              <span class="survey-bar-val">20%</span>
+            </div>
+          </div>
+        </div>
+        <div class="survey-insight">⚠️ 버려지는 옷이 <strong>25%</strong> — 자원이 낭비되고 있어요</div>
+      </div>
+
+      <!-- 3. 세일 기간 행동 -->
+      <div class="survey-card reveal rv3">
+        <div class="survey-q">🏷️ 세일 기간에 나는?</div>
+        <div class="survey-bars">
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">괜찮아 보이면 몇 개 구매</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:47%;background:#5f7187;"></div>
+              <span class="survey-bar-val">47%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">필요한 것만 신중하게 산다 ♻️</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:40%;background:#4a90d9;"></div>
+              <span class="survey-bar-val">40%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">싸니까 일단 많이 산다</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:13%;background:#6ec96e;"></div>
+              <span class="survey-bar-val">13%</span>
+            </div>
+          </div>
+        </div>
+        <div class="survey-insight">🔔 세일 때 <strong>충동구매 위험</strong>이 높아져요</div>
+      </div>
+
+      <!-- 4. 같은 옷 자주 입기 -->
+      <div class="survey-card reveal rv4">
+        <div class="survey-q">🔄 같은 옷을 자주 입는 것에 대해?</div>
+        <div class="survey-bars">
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">상황에 따라 다르다</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:55%;background:#5f7187;"></div>
+              <span class="survey-bar-val">55%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">당연히 괜찮다, 오래 입는 게 중요 💜</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:25%;background:#4a90d9;"></div>
+              <span class="survey-bar-val">25%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">같은 옷 자주 입는 건 좀 별로다</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:20%;background:#6ec96e;"></div>
+              <span class="survey-bar-val">20%</span>
+            </div>
+          </div>
+        </div>
+        <div class="survey-insight">✅ <strong>80%</strong>는 오래 입는 것에 긍정적이에요</div>
+      </div>
+
+      <!-- 5. 패션 정보 습득 -->
+      <div class="survey-card reveal rv1">
+        <div class="survey-q">📱 패션 정보 얻을 때 나는?</div>
+        <div class="survey-bars">
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">코디나 디자인 위주로 본다 👕</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:80%;background:#4a90d9;"></div>
+              <span class="survey-bar-val">80%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">브랜드 가치·생산 과정 찾아봄 🌏</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:12%;background:#5f7187;"></div>
+              <span class="survey-bar-val">12%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">인플루언서/유행 위주로 본다 🔥</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:8%;background:#6ec96e;"></div>
+              <span class="survey-bar-val">8%</span>
+            </div>
+          </div>
+        </div>
+        <div class="survey-insight">💡 <strong>12%만</strong> 브랜드 가치·생산 과정을 체크해요</div>
+      </div>
+
+      <!-- 6. 후기 체크 포인트 -->
+      <div class="survey-card reveal rv2">
+        <div class="survey-q">⭐ 옷을 살 때 후기를 본다면?</div>
+        <div class="survey-bars">
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">사이즈나 핏 위주로 본다</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:42%;background:#4a90d9;"></div>
+              <span class="survey-bar-val">42%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">내구성·오래 입을 수 있는지 확인 🌱</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:38%;background:#6ec96e;"></div>
+              <span class="survey-bar-val">38%</span>
+            </div>
+          </div>
+          <div class="survey-bar-row">
+            <span class="survey-bar-label">그냥 좋은 느낌이면 바로 산다 🔥</span>
+            <div class="survey-bar-wrap">
+              <div class="survey-bar" style="width:20%;background:#5f7187;"></div>
+              <span class="survey-bar-val">20%</span>
+            </div>
+          </div>
+        </div>
+        <div class="survey-insight">✅ <strong>38%</strong>는 내구성을 꼭 확인해요 — 지속가능한 선택!</div>
+      </div>
+
+    </div><!-- /survey-grid -->
+
+    <!-- 구매 고려사항 상세 (PDF 데이터) -->
+    <div class="survey-detail-wrap reveal">
+      <div class="survey-detail-hd">🛒 옷을 살 때 고려하는 점 (복수 선택)</div>
+      <div class="survey-detail-grid">
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:125px;background:#4a90d9;"></div>
+          </div>
+          <div class="survey-detail-val">89%</div>
+          <div class="survey-detail-lbl">디자인</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:120px;background:#4a90d9;"></div>
+          </div>
+          <div class="survey-detail-val">86%</div>
+          <div class="survey-detail-lbl">가격</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:105px;background:#6ec96e;"></div>
+          </div>
+          <div class="survey-detail-val">75%</div>
+          <div class="survey-detail-lbl">후기</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:70px;background:#6ec96e;"></div>
+          </div>
+          <div class="survey-detail-val">50%</div>
+          <div class="survey-detail-lbl">착용감</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:70px;background:#6ec96e;"></div>
+          </div>
+          <div class="survey-detail-val">50%</div>
+          <div class="survey-detail-lbl">코디 조합</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:60px;background:#5f7187;"></div>
+          </div>
+          <div class="survey-detail-val">43%</div>
+          <div class="survey-detail-lbl">실용성</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:35px;background:#5f7187;"></div>
+          </div>
+          <div class="survey-detail-val">25%</div>
+          <div class="survey-detail-lbl">유행</div>
+        </div>
+        <div class="survey-detail-item">
+          <div class="survey-detail-bar-wrap">
+            <div class="survey-detail-bar" style="height:10px;background:#c0c0c0;"></div>
+          </div>
+          <div class="survey-detail-val">7%</div>
+          <div class="survey-detail-lbl">모델 코디</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 구매 이유 블록 -->
+    <div class="survey-reason-wrap reveal">
+      <div class="survey-detail-hd">❓ 의류를 소비하는 이유 (복수 선택)</div>
+      <div class="survey-reason-grid">
+        <div class="survey-reason-card reason-main">
+          <div class="survey-reason-icon">👕</div>
+          <div class="survey-reason-num">89%</div>
+          <div class="survey-reason-lbl">의류가 필요해서</div>
+        </div>
+        <div class="survey-reason-card">
+          <div class="survey-reason-icon">💰</div>
+          <div class="survey-reason-num">32%</div>
+          <div class="survey-reason-lbl">세일·할인 기회</div>
+        </div>
+        <div class="survey-reason-card">
+          <div class="survey-reason-icon">😤</div>
+          <div class="survey-reason-num">18%</div>
+          <div class="survey-reason-lbl">스트레스 해소</div>
+        </div>
+        <div class="survey-reason-card">
+          <div class="survey-reason-icon">🔥</div>
+          <div class="survey-reason-num">11%</div>
+          <div class="survey-reason-lbl">유행 따라가기</div>
+        </div>
+        <div class="survey-reason-card">
+          <div class="survey-reason-icon">📱</div>
+          <div class="survey-reason-num">11%</div>
+          <div class="survey-reason-lbl">SNS 영향</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer>
-  <strong>옷 한 벌의 숨겨진 대가</strong><br>
+  <strong>Re:Fit — 지구가 치르는 패션의 값</strong><br>
   UN SDGs 목표 12 · 책임 있는 소비와 생산<br>
   데이터 출처: Ellen MacArthur Foundation · UNECE · UN Alliance for Sustainable Fashion · Textile Exchange · Greenpeace · WFO · 한국 환경부
 </footer>
